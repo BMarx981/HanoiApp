@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hanoi/presentation/board.dart';
-import 'package:hanoi/presentation/board_piece.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -32,5 +31,3 @@ class _MainPageState extends State<MainPage> {
     );
   }
 }
-
-

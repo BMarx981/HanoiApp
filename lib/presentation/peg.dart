@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hanoi/presentation/board_piece.dart';
 
 class Peg extends ConsumerWidget {
-  Peg({super.key, required this.index});
+  Peg({super.key, required this.index, required this.pieces});
 
   final int index;
   final BoxDecoration decoration = BoxDecoration(
@@ -13,11 +13,22 @@ class Peg extends ConsumerWidget {
     ),
     color: Colors.grey,
   );
+  final List<BoardPiece> pieces;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return DragTarget<BoardPiece>(
-        builder: (context, g, h) =>
-            Container(width: 30, decoration: decoration));
+      builder: (BuildContext context, List<dynamic> accepted,
+              List<dynamic> rejected) =>
+          Container(width: 30, decoration: decoration),
+      onWillAcceptWithDetails: (details) {
+        if (details.data.data.getIndex > pieces.last.data.getIndex) {
+          return false;
+        }
+        print(details.data.data.index);
+        pieces.add(details.data);
+        return true;
+      },
+    );
   }
 }

@@ -2,30 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:hanoi/presentation/piece_data.dart';
 
 class BoardPiece extends StatelessWidget {
-  const BoardPiece(
-      {super.key, required this.color, required this.num, required this.width});
+  const BoardPiece({super.key, required this.data});
 
-  final Color color;
-  final double width;
-  final int num;
+  final PieceData data;
 
   @override
   Widget build(BuildContext context) {
     return Draggable<PieceData>(
-      data: 
+      data: data,
       feedback: Container(
-        width: num * 20,
+        width: data.index * 20,
+        height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
-          color: color.withAlpha(124),
+          color: data.color.withAlpha(124),
+        ),
+      ),
+      childWhenDragging: Container(
+        width: data.index * 20,
+        height: 50,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(24),
+          color: data.color.withAlpha(124),
         ),
       ),
       child: Container(
         height: 50,
-        width: width,
+        width: data.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
-          color: color,
+          color: data.color,
         ),
       ),
     );
