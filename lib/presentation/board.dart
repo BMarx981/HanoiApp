@@ -19,9 +19,15 @@ class Board extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(width: 30, decoration: decoration),
-              Container(width: 30, decoration: decoration),
-              Container(width: 30, decoration: decoration),
+              DragTarget(
+                  builder: (context, g, h) =>
+                      Container(width: 30, decoration: decoration)),
+              DragTarget(
+                  builder: (context, g, h) =>
+                      Container(width: 30, decoration: decoration)),
+              DragTarget(
+                  builder: (context, g, h) =>
+                      Container(width: 30, decoration: decoration)),
             ],
           ),
         ),
