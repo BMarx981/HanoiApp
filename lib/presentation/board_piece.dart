@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hanoi/presentation/piece_data.dart';
 
 class BoardPiece extends StatelessWidget {
   const BoardPiece(
@@ -10,7 +11,8 @@ class BoardPiece extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Draggable(
+    return Draggable<PieceData>(
+      data: 
       feedback: Container(
         width: num * 20,
         decoration: BoxDecoration(

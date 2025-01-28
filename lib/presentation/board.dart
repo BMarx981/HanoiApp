@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hanoi/presentation/board_piece.dart';
+import 'package:hanoi/presentation/peg.dart';
 
 class Board extends StatelessWidget {
   Board({super.key});
@@ -19,15 +21,15 @@ class Board extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              DragTarget(
-                  builder: (context, g, h) =>
-                      Container(width: 30, decoration: decoration)),
-              DragTarget(
-                  builder: (context, g, h) =>
-                      Container(width: 30, decoration: decoration)),
-              DragTarget(
-                  builder: (context, g, h) =>
-                      Container(width: 30, decoration: decoration)),
+              Peg(
+                index: 1,
+              ),
+              Peg(
+                index: 2,
+              ),
+              Peg(
+                index: 3,
+              ),
             ],
           ),
         ),
@@ -40,3 +42,10 @@ class Board extends StatelessWidget {
     );
   }
 }
+
+List<BoardPiece> pieces = [
+  BoardPiece(color: Colors.green, num: 1, width: 70),
+  BoardPiece(color: Colors.orange, num: 2, width: 90),
+  BoardPiece(color: Colors.purple, num: 3, width: 110),
+  BoardPiece(color: Colors.yellow, num: 4, width: 130),
+];
