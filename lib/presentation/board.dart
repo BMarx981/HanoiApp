@@ -16,20 +16,43 @@ class Board extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          child: Stack(
             children: [
-              Peg(index: 1, pieces: pieces),
-              Peg(
-                index: 2,
-                pieces: [],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: 30,
+                    decoration: decoration,
+                  ),
+                  Container(
+                    decoration: decoration,
+                    width: 30,
+                  ),
+                  Container(
+                    width: 30,
+                    decoration: decoration,
+                  ),
+                ],
               ),
-              Peg(
-                index: 3,
-                pieces: [],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Peg(
+                    index: 1,
+                    pieces: pieces,
+                  ),
+                  Peg(
+                    index: 2,
+                    pieces: [],
+                  ),
+                  Peg(
+                    index: 3,
+                    pieces: [],
+                  ),
+                ],
               ),
             ],
           ),

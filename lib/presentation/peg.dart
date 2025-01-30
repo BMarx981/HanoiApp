@@ -7,28 +7,49 @@ class Peg extends ConsumerWidget {
 
   final int index;
   final BoxDecoration decoration = BoxDecoration(
+    border: Border.all(
+      color: Colors.black,
+    ),
     borderRadius: BorderRadius.only(
       topLeft: Radius.circular(8),
       topRight: Radius.circular(8),
     ),
-    color: Colors.grey,
+    color: Colors.transparent,
   );
   final List<BoardPiece> pieces;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return DragTarget<BoardPiece>(
-      builder: (BuildContext context, List<dynamic> accepted,
-              List<dynamic> rejected) =>
-          Container(width: 30, decoration: decoration),
-      onWillAcceptWithDetails: (details) {
-        if (details.data.data.getIndex > pieces.last.data.getIndex) {
-          return false;
-        }
-        print(details.data.data.index);
-        pieces.add(details.data);
-        return true;
-      },
+    return Stack(
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: pieces,
+        ),
+        Column(
+          children: [
+            Expanded(
+              child: DragTarget<BoardPiece>(builder: (BuildContext context,
+                  List<dynamic> accepted, List<dynamic> rejected) {
+                print(accepted.length);
+                print(rejected.length);
+                return Container(width: 30, decoration: decoration);
+              }, onWillAcceptWithDetails: (details) {
+                print(details.data.data.getIndex);
+                if (details.data.data.getIndex > pieces.last.data.getIndex) {
+                  print(details.data.data.color);
+                  return false;
+                }
+                pieces.add(details.data);
+                print('${pieces.length} add Length');
+                return true;
+              }, onAcceptWithDetails: (details) {
+                print('${details.data.data.color}');
+              }),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

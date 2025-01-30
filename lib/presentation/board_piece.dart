@@ -11,7 +11,7 @@ class BoardPiece extends StatelessWidget {
     return Draggable<PieceData>(
       data: data,
       feedback: Container(
-        width: data.index * 20,
+        width: data.width,
         height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
@@ -19,7 +19,7 @@ class BoardPiece extends StatelessWidget {
         ),
       ),
       childWhenDragging: Container(
-        width: data.index * 20,
+        width: data.width,
         height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
