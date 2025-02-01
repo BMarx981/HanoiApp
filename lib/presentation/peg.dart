@@ -29,23 +29,20 @@ class Peg extends ConsumerWidget {
         Column(
           children: [
             Expanded(
-              child: DragTarget<BoardPiece>(builder: (BuildContext context,
-                  List<dynamic> accepted, List<dynamic> rejected) {
-                print(accepted.length);
-                print(rejected.length);
-                return Container(width: 30, decoration: decoration);
-              }, onWillAcceptWithDetails: (details) {
-                print(details.data.data.getIndex);
-                if (details.data.data.getIndex > pieces.last.data.getIndex) {
-                  print(details.data.data.color);
-                  return false;
-                }
-                pieces.add(details.data);
-                print('${pieces.length} add Length');
-                return true;
-              }, onAcceptWithDetails: (details) {
-                print('${details.data.data.color}');
-              }),
+              child: DragTarget<BoardPiece>(
+                  builder: (BuildContext context, List<dynamic> accepted,
+                      List<dynamic> rejected) {
+                    return Container(width: 30, decoration: decoration);
+                  },
+                  onWillAcceptWithDetails: (details) {
+                    if (details.data.data.getIndex >
+                        pieces.last.data.getIndex) {
+                      return false;
+                    }
+                    pieces.add(details.data);
+                    return true;
+                  },
+                  onAcceptWithDetails: (details) {}),
             ),
           ],
         ),
